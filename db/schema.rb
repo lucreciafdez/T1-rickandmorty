@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_27_143327) do
+ActiveRecord::Schema.define(version: 2020_03_27_204755) do
+
+  create_table "characters", force: :cascade do |t|
+    t.integer "id_char"
+    t.string "name"
+    t.string "status"
+    t.string "species"
+    t.string "type_char"
+    t.string "gender"
+    t.string "origin"
+    t.text "location"
+    t.text "image"
+    t.string "episode"
+    t.string "url"
+    t.string "created"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "episodios", force: :cascade do |t|
     t.integer "id_epi"
@@ -18,6 +35,18 @@ ActiveRecord::Schema.define(version: 2020_03_27_143327) do
     t.string "air_date"
     t.string "episode"
     t.text "characters"
+    t.string "url"
+    t.string "created"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.integer "id_loc"
+    t.string "name"
+    t.string "type_loc"
+    t.string "dimension"
+    t.text "residents"
     t.string "url"
     t.string "created"
     t.datetime "created_at", precision: 6, null: false

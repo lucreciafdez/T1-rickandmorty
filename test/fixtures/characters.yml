@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id_char: 1
+  name: MyString
+  status: MyString
+  species: MyString
+  type_char: MyString
+  gender: MyString
+  origin: MyString
+  location: MyText
+  image: MyText
+  episode: MyString
+  url: MyString
+  created: MyString
+
+two:
+  id_char: 1
+  name: MyString
+  status: MyString
+  species: MyString
+  type_char: MyString
+  gender: MyString
+  origin: MyString
+  location: MyText
+  image: MyText
+  episode: MyString
+  url: MyString
+  created: MyString

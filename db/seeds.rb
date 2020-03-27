@@ -15,3 +15,24 @@ while i <= 31 do
                 created: epi["created"] )
   i += 1
 end
+
+k = 1
+while k <= 76 do
+  http_loc = HTTP.get("https://rickandmortyapi.com/api/location/#{k}").body
+  loc = JSON.parse(http_loc)
+  Location.create(id_loc: loc["id"], name: loc["name"], type_loc: loc["type"],
+      dimension: loc["dimension"], residents: loc["residents"], url: loc["url"],
+      created: loc["created"])
+  k += 1
+end
+
+j = 1
+while j <= 493 do
+  http_char = HTTP.get("https://rickandmortyapi.com/api/character/#{j}").body
+  char = JSON.parse(http_char)
+  Character.create(id_char: char["id"], name: char["name"], status: char["status"],
+     species: char["species"], type_char: char["type"], gender: char["gender"],
+     origin: char["origin"], location: char["location"], image: char["image"],
+     episode: char["episode"], url: char["url"], created: char["created"])
+  j += 1
+end

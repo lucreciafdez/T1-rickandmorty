@@ -1,2 +1,22 @@
 <h1>Character#show</h1>
 <p>Find me in app/views/character/show.html.erb</p>
+
+<h3><%= @character.name %></h3>
+<h3><%= @character.status %></h3>
+<h3><%= @character.species %></h3>
+<h3><%= @character.type_char %></h3>
+<h3><%= @character.gender %></h3>
+<h3><%= @character.origin %></h3>
+<h3><%= @character.location %></h3>
+
+<% ori = eval(@character.origin)%>
+
+<img src="<%= @character.image %>"alt= "Image" height="250" width="300">
+
+<%JSON.parse(@character.episode).each do |url| %>
+<% Episodio.all.each do |epi| %>
+<% if epi.url == url %>
+  <%= link_to epi.name, episodio_path(epi) %>
+<% end %>
+<% end %>
+<% end %>

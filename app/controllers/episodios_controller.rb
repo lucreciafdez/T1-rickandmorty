@@ -10,7 +10,7 @@ class EpisodiosController < ApplicationController
   end
 
   def show
-    @episodio = Episodio.find(params[:id_epi])
+    @episodio = Episodio.find(params[:id])
   end
 
   def create

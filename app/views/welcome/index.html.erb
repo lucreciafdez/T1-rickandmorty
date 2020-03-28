@@ -1,1 +1,8 @@
-<h1>Hello, Rails!</h1>
+<h1>Welcome#index</h1>
+<% Episodio.all.each do |episodio| %>
+ <h3><%= episodio.id_epi %></h3>
+  <h3><%= episodio.name %></h3>
+<h3><%= episodio.air_date %></h3>
+<h3><%= episodio.episode %></h3>
+<%= link_to 'Ver', episodio_path(episodio) %>
+<% end %>

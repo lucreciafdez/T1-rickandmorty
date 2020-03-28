@@ -1,6 +1,8 @@
 <h1>Locations#index</h1>
 
 <% @location.each do |c| %>
-    <div><%= c.id_loc %></div>
-    <div><%= c.name %></div>
+    <h4><%= c.name %></h4>
+    <h4><%= c.type_loc %></h4>
+    <h4><%= c.dimension %></h4>
+    <%= link_to 'Ver', location_path(c) %>
      <% end %>

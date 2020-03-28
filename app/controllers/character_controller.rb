@@ -10,7 +10,7 @@ class CharacterController < ApplicationController
   end
 
   def show
-    @character = Character.find(params[:id_char])
+    @character = Character.find(params[:id])
   end
 
   def create

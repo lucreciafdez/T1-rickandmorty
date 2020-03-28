@@ -1,2 +1,13 @@
 <h1>Locations#show</h1>
 <p>Find me in app/views/locations/show.html.erb</p>
+
+<h4><%= @location.name %></h4>
+<h4><%= @location.type_loc %></h4>
+<h4><%= @location.dimension %></h4>
+<%@location.residents.each do |url| %>
+    <% Character.all.each do |char| %>
+    <% if char.url == url %>
+      <%= link_to char.name, character_path(char) %>
+    <% end %>
+    <% end %>
+  <% end %>

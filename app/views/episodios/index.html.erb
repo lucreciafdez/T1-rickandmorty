@@ -1,5 +1,8 @@
 <h1> Index episodios <h2>
 
 <% @episodio.each do |e| %>
-    <div><%= e.name %></div>
+    <h3><%= e.name %></h3>
+    <%= link_to 'Ver', episodio_path(e) %>
+    <h3><%= e.air_date %></h3>
+    <h3><%= e.episode %></h3>
      <% end %>

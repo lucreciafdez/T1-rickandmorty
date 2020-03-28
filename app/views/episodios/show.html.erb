@@ -1,2 +1,12 @@
 <h1>Episodios#show</h1>
 <p>Find me in app/views/episodios/show.html.erb</p>
+<h3><%= @episodio.name %></h3>
+<h3><%= @episodio.air_date %></h3>
+<h3><%= @episodio.episode %></h3>
+<%@episodio.characters.each do |url| %>
+    <% Character.all.each do |char| %>
+    <% if char.url == url %>
+      <%= link_to char.name, character_path(char) %>
+    <% end %>
+    <% end %>
+  <% end %>

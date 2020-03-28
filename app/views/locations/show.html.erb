@@ -4,10 +4,11 @@
 <h4><%= @location.name %></h4>
 <h4><%= @location.type_loc %></h4>
 <h4><%= @location.dimension %></h4>
+<h4><%= Residentes %></h4>
 <%@location.residents.each do |url| %>
     <% Character.all.each do |char| %>
     <% if char.url == url %>
-      <%= link_to char.name, character_path(char) %>
+      <h4><%= link_to char.name, character_path(char) %><h4>
     <% end %>
     <% end %>
   <% end %>

@@ -1,4 +1,9 @@
 <h1>Welcome#index</h1>
+<%= form_tag(episodios_path method: :get) do %>
+    Episodio <%= text_field_tag :episodio, params[:episodio] %>
+    <%= submit_tag 'Search', name: nil %>
+  <% end %>
+
 <% Episodio.all.each do |episodio| %>
  <h3><%= episodio.id_epi %></h3>
   <h3><%= episodio.name %></h3>

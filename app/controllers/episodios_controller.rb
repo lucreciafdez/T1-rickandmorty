@@ -3,7 +3,7 @@ require "http"
 class EpisodiosController < ApplicationController
   def index
     if params[:search]
-      @episodio = Episodio.search(params[:search])
+      @episodio = Episodio.search(params[:search]).order("created_at DESC")
     else
       @episodio = Episodio.all
     end
@@ -14,7 +14,7 @@ class EpisodiosController < ApplicationController
   end
 
   def create
-   @episodio = Episodio.new(param[:episodio])
+   @episodio = Episodio.new(params[:id])
   end
 
   def new

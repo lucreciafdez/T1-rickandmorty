@@ -1,8 +1,76 @@
 <h1>Locations#index</h1>
 
-<% @location.each do |c| %>
-    <h4><%= c.name %></h4>
-    <h4><%= c.type_loc %></h4>
-    <h4><%= c.dimension %></h4>
-    <%= link_to 'Ver', location_path(c) %>
-     <% end %>
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Heroic Features - Start Bootstrap Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/heroic-features.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+
+    <!-- Page Content -->
+    <div class="container">
+
+      <!-- Jumbotron Header -->
+      <header class="jumbotron my-4" style="background-image: url(https://specials-images.forbesimg.com/imageserve/1035676256/960x0.jpg?fit=scale);" style="height: 600px;">
+        <h1 class="display-3"></h1>
+        <p class="lead"></p>
+        <a href="#" class="btn btn-secondary">Ir al Inicio</a>
+      </header>
+
+
+
+      <!-- Page Features -->
+      <div class="row text-center">
+
+        <% @location.each do |e| %>
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card h-100">
+              <img class="card-img-top" src=<%= "https://i.pinimg.com/originals/69/ce/b0/69ceb0ed9a4df2cd159b069fe04b21ec.jpg"%> alt="">
+              <div class="card-body">
+                <h4 class="card-title"><%= e.name%> </h4>
+                <p class="card-text"> <%= e.dimension %> </p>
+              </div>
+              <div class="card-footer">
+                <%= link_to 'Ver Lugar', location_path(e), class:"btn btn-secondary" %>
+
+              </div>
+            </div>
+          </div>
+        <% end %>
+
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white"></p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+
+  </html>

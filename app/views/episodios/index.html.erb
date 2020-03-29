@@ -1,9 +1,76 @@
-<h1> Index episodios <h2>
+<h1>Episodios#index</h1>
+
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Heroic Features - Start Bootstrap Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/heroic-features.css" rel="stylesheet">
+
+  </head>
+
+  <body>
 
 
-<% @episodio.each do |e| %>
-    <h3><%= e.name %></h3>
-    <%= link_to 'Ver', episodio_path(e) %>
-    <h3><%= e.air_date %></h3>
-    <h3><%= e.episode %></h3>
-     <% end %>
+    <!-- Page Content -->
+    <div class="container">
+
+      <!-- Jumbotron Header -->
+      <header class="jumbotron my-4" style="background-image: url(https://spacenews.com/wp-content/uploads/2017/12/Space_Debris-879x485.jpg);" style="height: 600px;">
+        <h1 class="display-3"></h1>
+        <p class="lead"></p>
+        <a href="#" class="btn btn-secondary">Ir al Inicio</a>
+      </header>
+
+
+
+      <!-- Page Features -->
+      <div class="row text-center">
+
+        <% @episodio.each do |e| %>
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card h-100">
+              <img class="card-img-top" src="https://www.rockandpop.cl/wp-content/uploads/2018/10/rick-and-morty-400x360.jpg" alt="">
+              <div class="card-body">
+                <h4 class="card-title"><%= e.name%> </h4>
+                <p class="card-text"> <%= e.episode %> <%= e.air_date %></p>
+              </div>
+              <div class="card-footer">
+                <%= link_to 'Ver Episodio', episodio_path(e), class:"btn btn-secondary" %>
+
+              </div>
+            </div>
+          </div>
+        <% end %>
+
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white"></p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+
+  </html>

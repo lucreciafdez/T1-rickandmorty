@@ -6,9 +6,44 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="/">Rick and Morty</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Inicio
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../episodios/index">Episodios</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../character/index">Personajes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../locations/index">Lugares</a>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <%= form_tag(episodios_path, method: :get) do %>
+            <%= text_field_tag :episodio, params[:episodio], placeholder: "Buscar" %>
+            <%= submit_tag '', class:'btn btn-default' %>
+            <% end %>
+          </form>
+        </div>
+      </div>
+    </nav>
+
     <%= yield %>
   </body>
 </html>

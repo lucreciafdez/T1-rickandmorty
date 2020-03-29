@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'character/show'
   get 'episodios/index'
   get 'episodios/show'
-  get '/', to: 'welcome#index'
+  get '/', to: 'episodios#welcome'
   resources :episodios
   resources :character
   resources :locations

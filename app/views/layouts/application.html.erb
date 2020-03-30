@@ -34,12 +34,10 @@
               <a class="nav-link" href="../locations/index">Lugares</a>
             </li>
           </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <%= form_tag(episodios_path, method: :get) do %>
-            <%= text_field_tag :episodio, params[:episodio], placeholder: "Buscar" %>
-            <%= submit_tag '', class:'btn btn-default' %>
+            <%= form_tag search_index_path, method: :get do %>
+            <%= search_field_tag :search, params[:search], placeholder: "Buscar" %>
+            <%= submit_tag 'buscar', class:'btn btn-default' %>
             <% end %>
-          </form>
         </div>
       </div>
     </nav>

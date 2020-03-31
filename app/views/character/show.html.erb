@@ -45,17 +45,39 @@
 
     <!-- Page Features -->
     <h3>Origen</h3>
-
+    <% Location.all.each do |loc| %>
+    <% if loc.url == JSON.parse(@character.origin.gsub('=>', ':'))["url"]%>
+    <%= link_to loc.name, location_path(loc), class:"btn btn-secondary"%>
+    <% end %>
+    <% end %>
 
     <h3>Location</h3>
-
+    <% Location.all.each do |loc| %>
+    <% if loc.url == JSON.parse(@character.location.gsub('=>', ':'))["url"]%>
+    <%= link_to loc.name, location_path(loc), class:"btn btn-secondary"%>
+    <% end %>
+    <% end %>
 
 
     <h2> Episodios </h2>
     <div class="row text-center">
      <%@character.episode.each do |url| %>
-     <h2> 1 </h2>
+         <% Episode.all.each do |epi| %>
+         <% if epi.url == url %>
 
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card h-100">
+            <img class="card-img-top" src="https://www.rockandpop.cl/wp-content/uploads/2018/10/rick-and-morty-400x360.jpg" alt="">
+            <div class="card-body">
+              <h4 class="card-title"><%= epi.name%> </h4>
+            </div>
+            <div class="card-footer">
+              <h4><%= link_to 'Ver Episodio', episodio_path(epi), class:"btn btn-secondary"%><h4>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <% end %>
     <% end %>
 
     <!-- /.row -->

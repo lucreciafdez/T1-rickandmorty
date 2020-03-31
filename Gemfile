@@ -11,7 +11,7 @@ gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
 #end
 
 #group :production do
-gem 'pg'         #gem to use in production environment
+gem 'pg', '~> 0.18.4'         #gem to use in production environment
 #end
 # Use Puma as the app server
 gem 'puma', '~> 4.1'

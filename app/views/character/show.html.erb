@@ -52,6 +52,13 @@
     <% end %>
     <% end %>
 
+    <h3>Locación</h3>
+    <% ori = JSON.parse(@character.location.gsub('=>', ':'))["url"] %>
+    <% Location.all.each do |loc| %>
+    <% if loc.url == ori%>
+    <%= link_to loc.name, location_path(loc), class:"btn btn-secondary"%>
+    <% end %>
+    <% end %>
 
 
     <h2> Episodios </h2>

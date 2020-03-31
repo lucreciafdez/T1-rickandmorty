@@ -45,10 +45,11 @@
 
     <!-- Page Features -->
     <h3>Origen</h3>
-    <% url = @character.origin["url"] %>
+    <% loc_url = JSON.parse(@character.origin.gsub('=>', ':'))["url"]%>
+<h3><% loc_url%></h3>
 
     <h3>Location</h3>
-    <% url = @character.location["name"] %>
+
 
 
     <h2> Episodios </h2>

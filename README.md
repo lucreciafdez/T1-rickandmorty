@@ -1,24 +1,8 @@
-# README
+# Tarea 1 - Rick and Morty
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Aspectos relevantes:
+1. Buscador diferencia entre mayúsculas y minúsculas
+2. El código principal se encuentra en la rama bootstrap
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Heroku
+El link a heroku es: https://rickandmorty-taller.herokuapp.com/

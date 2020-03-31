@@ -44,25 +44,12 @@
 
 
     <!-- Page Features -->
-    <h3>Origen</h3>
-    <% Location.all.each do |loc| %>
-    <% if loc.url == JSON.parse(@character.origin.gsub('=>', ':'))["url"]%>
-    <%= link_to loc.name, location_path(loc), class:"btn btn-secondary"%>
-    <% end %>
-    <% end %>
-
-    <h3>Location</h3>
-    <% Location.all.each do |loc| %>
-    <% if loc.url == JSON.parse(@character.location.gsub('=>', ':'))["url"]%>
-    <%= link_to loc.name, location_path(loc), class:"btn btn-secondary"%>
-    <% end %>
-    <% end %>
 
 
     <h2> Episodios </h2>
     <div class="row text-center">
      <%@character.episode.each do |url| %>
-         <% Episode.all.each do |epi| %>
+         <% Episodio.all.each do |epi| %>
          <% if epi.url == url %>
 
         <div class="col-lg-3 col-md-6 mb-4">

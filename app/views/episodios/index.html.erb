@@ -38,21 +38,26 @@
       <h3 class="text-secondary">Episodios</h3>
       <div class="row text-center">
 
-        <% @episodio.each do |e| %>
-          <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card h-100">
-              <img class="card-img-top" src="https://www.rockandpop.cl/wp-content/uploads/2018/10/rick-and-morty-400x360.jpg" alt="">
-              <div class="card-body">
-                <h4 class="card-title"><%= e.name%> </h4>
-                <p class="card-text"> <%= e.episode %> <%= e.air_date %></p>
-              </div>
-              <div class="card-footer">
-                <%= link_to 'Ver Episodio', episodio_path(e), class:"btn btn-secondary" %>
 
+        <% i = 1 %>
+        <% while i <= 2 do %>
+        <%= result = Episodio.consulta_pagina(i) ; nil%>
+         <% result.each do |epi| %>
+            <div class="col-lg-3 col-md-6 mb-4">
+              <div class="card h-100">
+                <img class="card-img-top" src="https://www.rockandpop.cl/wp-content/uploads/2018/10/rick-and-morty-400x360.jpg" alt="">
+                <div class="card-body">
+                  <h4 class="card-title"><%= epi["name"]%> </h4>
+                  <p class="card-text"> <%= epi["episode"] %> <%= epi["air_date"] %></p>
+                </div>
+                <div class="card-footer">
+                  <%= link_to 'Ver Episodio', "../episodios/#{epi["id"]}", class:"btn btn-secondary" %>
+                </div>
               </div>
             </div>
-          </div>
-        <% end %>
+           <% end %>
+          <% i += 1 %>
+          <% end %>
 
       <!-- /.row -->
 

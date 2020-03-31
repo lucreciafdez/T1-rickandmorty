@@ -28,34 +28,34 @@
 
       <!-- Jumbotron Header -->
       <header class="jumbotron my-4" >
-        <h1 class="display-3"><%= @episodio.name %></h1>
-        <p class="lead"><%= @episodio.air_date %></p>
-        <p class="lead"><%= @episodio.episode %></p>
+        <h1 class="display-3"><%= id_epi = request.path.split('/').last ; nil%></h1>
+        <%= result_epi = Episodio.consulta_uno(id_epi) ; nil%>
+        <h1 class="display-3"><%= result_epi["name"] %></h1>
+        <p class="lead"><%= result_epi["air_date"]%></p>
+        <p class="lead"><%= result_epi["episode"] %></p>
         <a href="../episodios/index" class="btn btn-secondary">Volver a Episodios</a>
       </header>
 
 
 
       <!-- Page Features -->
-      <h2> Personajes </h2>
+      <h3 class="text-secondary">Personajes</h3>
       <div class="row text-center">
-       <%@episodio.characters.each do |url| %>
-           <% Character.all.each do |char| %>
-           <% if char.url == url %>
 
-          <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card h-100">
-              <img class="card-img-top" src=<%= char.image%> alt="">
-              <div class="card-body">
-                <h4 class="card-title"><%= char.name%> </h4>
-              </div>
-              <div class="card-footer">
-                <h4><%= link_to 'Ver Personaje', character_path(char), class:"btn btn-secondary"%><h4>
-              </div>
-            </div>
+      <% result_char = Episodio.consulta_obtener_char(id_epi)%>
+      <% list_char = Character.consulta_varios(result_char) %>
+      <% list_char.each do |char| %>
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100">
+          <img class="card-img-top" src=<%= char["image"] %> alt="">
+          <div class="card-body">
+            <h4 class="card-title"><%= char["name"]%> </h4>
           </div>
-        <% end %>
-        <% end %>
+          <div class="card-footer">
+            <%= link_to 'Ver Personaje', "../character/#{char["id"]}", class:"btn btn-secondary" %>
+          </div>
+        </div>
+      </div>
       <% end %>
 
       <!-- /.row -->

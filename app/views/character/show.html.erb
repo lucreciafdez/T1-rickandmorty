@@ -28,15 +28,16 @@
 
     <!-- Jumbotron Header -->
     <header class="jumbotron my-4" >
-      <h1 class="display-3"><%= @character.name %></h1>
-      <img src=<%= @character.image %> alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:200px;">
+      <h1 class="display-3"><%= id_char = request.path.split('/').last ; nil%></h1>
+      <%= result_char = Character.consulta_uno(id_char) ; nil%>
+      <h1 class="display-3"><%= result_char["name"] %></h1>
+      <img src=<%= result_char["image"] %> alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:200px;">
       <div class="grid">
         <div class="row">
-          <div class="col-sm-3"><%= @character.status %></div>
-          <div class="col-xl-12"><%= @character.species %></div>
-          <div class="col-xl-12"><%= @character.gender %></div>
-          <div class="col-xl-12"><%= @character.type_char %></div>
-          <div class="col-xl-12"><%= @character.type_char %></div>
+          <div class="col-sm-3"><%= result_char["status"] %></div>
+          <div class="col-xl-12"><%= result_char["specie"] %></div>
+          <div class="col-xl-12"><%= result_char["gender"] %></div>
+          <div class="col-xl-12"><%= result_char["type_char"] %></div>
         </div>
       </div>
     </header>
@@ -45,41 +46,34 @@
 
     <!-- Page Features -->
     <h3>Origen</h3>
-    <% ori = JSON.parse(@character.origin.gsub('=>', ':'))["url"] %>
-    <% Location.all.each do |loc| %>
-    <% if loc.url == ori%>
-    <%= link_to loc.name, location_path(loc), class:"btn btn-secondary"%>
-    <% end %>
-    <% end %>
+    <% origen = result_char["origin"]["url"] %>
+    <% datos_or = JSON.parse(HTTP.get(origen).body) %>
+    <%= link_to datos_or["name"], "../location/#{datos_or["id"]}", class:"btn btn-secondary"%>
+
 
     <h3>Locación</h3>
-    <% ori = JSON.parse(@character.location.gsub('=>', ':'))["url"] %>
-    <% Location.all.each do |loc| %>
-    <% if loc.url == ori%>
-    <%= link_to loc.name, location_path(loc), class:"btn btn-secondary"%>
-    <% end %>
-    <% end %>
+    <% locacion = result_char["location"]["url"] %>
+    <% datos_lo = JSON.parse(HTTP.get(locacion).body) %>
+    <%= link_to datos_lo["name"], "../location/#{datos_lo["id"]}", class:"btn btn-secondary"%>
 
 
-    <h2> Episodios </h2>
+    <h3 class="text-secondary">Episodios</h3>
     <div class="row text-center">
-     <%@character.episode.each do |url| %>
-         <% Episodio.all.each do |epi| %>
-         <% if epi.url == url %>
 
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card h-100">
-            <img class="card-img-top" src="https://www.rockandpop.cl/wp-content/uploads/2018/10/rick-and-morty-400x360.jpg" alt="">
-            <div class="card-body">
-              <h4 class="card-title"><%= epi.name%> </h4>
-            </div>
-            <div class="card-footer">
-              <h4><%= link_to 'Ver Episodio', episodio_path(epi), class:"btn btn-secondary"%><h4>
-            </div>
-          </div>
+    <% result_epi = Character.consulta_obtener_epi(id_char)%>
+    <% list_epi = Episodio.consulta_varios(result_epi) %>
+    <% list_epi.each do |epi| %>
+    <div class="col-lg-3 col-md-6 mb-4">
+      <div class="card h-100">
+        <img class="card-img-top" src="https://www.rockandpop.cl/wp-content/uploads/2018/10/rick-and-morty-400x360.jpg"alt="">
+        <div class="card-body">
+          <h4 class="card-title"><%= epi["name"]%> </h4>
         </div>
-      <% end %>
-      <% end %>
+        <div class="card-footer">
+          <%= link_to 'Ver Episodio', "../episodio/#{epi["id"]}", class:"btn btn-secondary" %>
+        </div>
+      </div>
+    </div>
     <% end %>
 
     <!-- /.row -->

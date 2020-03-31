@@ -36,26 +36,27 @@
 
 
       <!-- Page Features -->
-      <h2 >¡Bienvenido a Rick and Morty!</h2>
-
-      <h6 class="text-secondary">Selecciona el episodio que quieras</h6>
+      <h3 class="text-secondary">Episodios</h3>
       <div class="row text-center">
 
-        <% Episodio.all.each do |e| %>
-          <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card h-100">
-              <div class="card-body">
-                <h4 class="card-title"> <%= e.name%> </h4>
-                <p class="card-text"> <%= e.episode %> </p>
-                <p class="card-text"> <%= e.air_date %> </p>
-              </div>
-              <div class="card-footer">
-                <%= link_to 'Ver Episodio', episodio_path(e), class:"btn btn-secondary" %>
-
+        <% i = 1 %>
+        <% while i <= 2 do %>
+        <%= result = Episodio.consulta_pagina(i) ; nil%>
+         <% result.each do |epi| %>
+            <div class="col-lg-3 col-md-6 mb-4">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h4 class="card-title"><%= epi["name"]%> </h4>
+                  <p class="card-text"> <%= epi["episode"] %> <%= epi["air_date"] %></p>
+                </div>
+                <div class="card-footer">
+                  <%= link_to 'Ver Episodio', "../episodios/#{epi["id"]}", class:"btn btn-secondary" %>
+                </div>
               </div>
             </div>
-          </div>
-        <% end %>
+           <% end %>
+          <% i += 1 %>
+          <% end %>
 
       <!-- /.row -->
 

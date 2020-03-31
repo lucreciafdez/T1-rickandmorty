@@ -28,9 +28,11 @@
 
       <!-- Jumbotron Header -->
       <header class="jumbotron my-4" >
-        <h1 class="display-3"><%= @location.name %></h1>
-        <p class="lead"><%= @location.type_loc %></p>
-        <p class="lead"><%= @location.dimension %></p>
+        <h1 class="display-3"><%= id_loc = request.path.split('/').last ; nil%></h1>
+        <%= result_loc = Location.consulta_uno(id_loc) ; nil%>
+        <h1 class="display-3"><%= result_loc["name"] %></h1>
+        <p class="lead"><%= result_loc["type_loc"] %></p>
+        <p class="lead"><%= result_loc["dimension"] %></p>
         <a href="../locations/index" class="btn btn-secondary">Volver a Lugares</a>
       </header>
 
@@ -39,24 +41,23 @@
       <!-- Page Features -->
       <h2> Residentes</h2>
       <div class="row text-center">
-       <%@location.residents.each do |url| %>
-           <% Character.all.each do |char| %>
-           <% if char.url == url %>
 
-          <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card h-100">
-              <img class="card-img-top" src=<%= char.image%> alt="">
-              <div class="card-body">
-                <h4 class="card-title"><%= char.name%> </h4>
-              </div>
-              <div class="card-footer">
-                <h4><%= link_to 'Ver Personaje', character_path(char), class:"btn btn-secondary"%><h4>
-              </div>
+        <% result_char = Location.consulta_obtener_char(id_loc)%>
+        <% list_char = Character.consulta_varios(result_char) %>
+        <% list_char.each do |char| %>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card h-100">
+            <img class="card-img-top" src=<%= char["image"] %> alt="">
+            <div class="card-body">
+              <h4 class="card-title"><%= char["name"]%> </h4>
+            </div>
+            <div class="card-footer">
+              <%= link_to 'Ver Personaje', "../character/#{char["id"]}", class:"btn btn-secondary" %>
             </div>
           </div>
+        </div>
         <% end %>
-        <% end %>
-      <% end %>
+
 
       <!-- /.row -->
 

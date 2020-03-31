@@ -45,13 +45,14 @@
 
     <!-- Page Features -->
     <h3>Origen</h3>
-    <% url = @character.origin.split(",").last%>
-    <% url2 = url.split("=>").last%>
-    <% url2 = url.split("}").first%>
-    <% Location.all.each do |loc| %>
-    <%= link_to loc.name, location_path(loc), class:"btn btn-secondary"%>
-    <% end %>
-    <% end %>
+    <% url = @character.origin %>
+    <!% url = @character.origin.split(",").last%>
+    <!% url2 = url.split("=>").last%>
+    <!% url2 = url.split("}").first%>
+    <!% Location.all.each do |loc| %>
+    <!%= link_to loc.name, location_path(loc), class:"btn btn-secondary"%>
+    <!% end %>
+    <!% end %>
 
     <h3>Location</h3>
     <!% Location.all.each do |loc| %>

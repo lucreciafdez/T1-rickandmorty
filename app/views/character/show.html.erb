@@ -29,7 +29,7 @@
     <!-- Jumbotron Header -->
     <header class="jumbotron my-4" >
       <h1 class="display-3"><%= id_char = request.path.split('/').last ; nil%></h1>
-      <%= result_char = Character.consulta_uno(id_char) ; nil%>
+      <% result_char = Character.consulta_uno(id_char)%>
       <h1 class="display-3"><%= result_char["name"] %></h1>
       <img src=<%= result_char["image"] %> alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:200px;">
       <div class="grid">
@@ -47,15 +47,21 @@
     <!-- Page Features -->
     <h3>Origen</h3>
     <% origen = result_char["origin"]["url"] %>
+    <% if origen == "" %>
+      <h6>No se tiene registro de origen</h6>
+    <% else %>
     <% datos_or = JSON.parse(HTTP.get(origen).body) %>
     <%= link_to datos_or["name"], "../locations/#{datos_or["id"]}", class:"btn btn-secondary"%>
-
+    <% end %>
 
     <h3>Locación</h3>
     <% locacion = result_char["location"]["url"] %>
-    <% datos_lo = JSON.parse(HTTP.get(locacion).body) %>
-    <%= link_to datos_lo["name"], "../locations/#{datos_lo["id"]}", class:"btn btn-secondary"%>
-
+    <% if locacion == "" %>
+      <h6>No se tiene registro de locación</h6>
+    <% else %>
+    <% datos_loc = JSON.parse(HTTP.get(locacion).body) %>
+    <%= link_to datos_loc["name"], "../locations/#{datos_loc["id"]}", class:"btn btn-secondary"%>
+    <% end %>
 
     <h3>Episodios</h3>
     <div class="row text-center">

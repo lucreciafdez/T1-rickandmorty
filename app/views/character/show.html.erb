@@ -44,9 +44,8 @@
 
     <!-- Page Features -->
     <h3>Origen</h3>
-    <% require JSON do
     <%= loc_url = JSON.parse(@character.origin.gsub('=>', ':'))['url']%>
-    <% end%>
+
 
    <h3><% loc_url%></h3>
 

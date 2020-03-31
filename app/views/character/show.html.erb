@@ -48,16 +48,16 @@
     <h3>Origen</h3>
     <% origen = result_char["origin"]["url"] %>
     <% datos_or = JSON.parse(HTTP.get(origen).body) %>
-    <%= link_to datos_or["name"], "../location/#{datos_or["id"]}", class:"btn btn-secondary"%>
+    <%= link_to datos_or["name"], "../locations/#{datos_or["id"]}", class:"btn btn-secondary"%>
 
 
     <h3>Locación</h3>
     <% locacion = result_char["location"]["url"] %>
     <% datos_lo = JSON.parse(HTTP.get(locacion).body) %>
-    <%= link_to datos_lo["name"], "../location/#{datos_lo["id"]}", class:"btn btn-secondary"%>
+    <%= link_to datos_lo["name"], "../locations/#{datos_lo["id"]}", class:"btn btn-secondary"%>
 
 
-    <h3 class="text-secondary">Episodios</h3>
+    <h3>Episodios</h3>
     <div class="row text-center">
 
     <% result_epi = Character.consulta_obtener_epi(id_char)%>

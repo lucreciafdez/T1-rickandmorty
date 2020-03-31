@@ -9,22 +9,4 @@ class EpisodiosController < ApplicationController
     end
   end
 
-  def show
-    @episodio = Episodio.find(params[:id])
-  end
-
-  def create
-   @episodio = Episodio.new(params[:id])
-  end
-
-  def new
-    @episodio = Episodio.new
-  end
-
-  private
-    	def episodio_params
-      	params.require(:episodio).permit(:id_epi, :name, :air_date, :episode, :characters, :url, :created)
-        #params.permit(:nombre, :correo, :direccion, :valoracion, :imagenes, :telefono)
-      end
-
 end

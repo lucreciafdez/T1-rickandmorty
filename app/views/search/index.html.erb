@@ -38,53 +38,58 @@
     <h5 class="text-secondary">Resultados de Búsqueda:</h5>
     <div class="row text-center">
 
-      <% @result_location.each do |e| %>
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card h-100">
-            <img class="card-img-top" src=<%= "https://i.pinimg.com/originals/69/ce/b0/69ceb0ed9a4df2cd159b069fe04b21ec.jpg"%> alt="">
-            <div class="card-body">
-              <h4 class="card-title">Lugar: <%= e.name%> </h4>
-              <p class="card-text"> <%= e.dimension %> </p>
-            </div>
-            <div class="card-footer">
-              <%= link_to 'Ver Lugar', location_path(e), class:"btn btn-secondary" %>
-
-            </div>
+      <% url_char = Character.consulta_todos%>
+      <% url_char.each do |char| %>
+      <% if @input.in? char["name"].downcase %>
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100">
+          <img class="card-img-top" src=<%= char["image"] %> alt="">
+          <div class="card-body">
+            <h4 class="card-title">Personaje: <%= char["name"]%> </h4>
+          </div>
+          <div class="card-footer">
+            <%= link_to 'Ver Personaje', "../character/#{char["id"]}", class:"btn btn-secondary" %>
           </div>
         </div>
+      </div>
+      <% end %>
       <% end %>
 
-      <% @result_episode.each do |e| %>
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card h-100">
-            <img class="card-img-top" src="https://www.rockandpop.cl/wp-content/uploads/2018/10/rick-and-morty-400x360.jpg" alt="">
-            <div class="card-body">
-              <h4 class="card-title">Episodio: <%= e.name%> </h4>
-              <p class="card-text"> <%= e.episode %> <%= e.air_date %></p>
-            </div>
-            <div class="card-footer">
-              <%= link_to 'Ver Episodio', episodio_path(e), class:"btn btn-secondary" %>
-
-            </div>
+      <% url_epi = Episodio.consulta_todos%>
+      <% url_epi.each do |epi| %>
+      <% if @input.in? epi["name"].downcase %>
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100">
+          <img class="card-img-top" src="https://www.rockandpop.cl/wp-content/uploads/2018/10/rick-and-morty-400x360.jpg" alt="">
+          <div class="card-body">
+            <h4 class="card-title">Episodio: <%= epi["name"]%> </h4>
+          </div>
+          <div class="card-footer">
+            <%= link_to 'Ver Episodio', "../episodios/#{epi["id"]}", class:"btn btn-secondary" %>
           </div>
         </div>
+      </div>
+      <% end %>
       <% end %>
 
-      <% @result_character.each do |e| %>
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card h-100">
-            <img class="card-img-top" src=<%= e.image%> alt="">
-            <div class="card-body">
-              <h4 class="card-title">Personaje: <%= e.name%> </h4>
-              <p class="card-text"> <%= e.species %> </p>
-            </div>
-            <div class="card-footer">
-              <%= link_to 'Ver Personaje', character_path(e), class:"btn btn-secondary" %>
 
-            </div>
+      <% url_loc = Location.consulta_todos%>
+      <% url_loc.each do |loc| %>
+      <% if @input.in? loc["name"].downcase %>
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100">
+          <img class="card-img-top" src="https://i.pinimg.com/originals/69/ce/b0/69ceb0ed9a4df2cd159b069fe04b21ec.jpg" alt="">
+          <div class="card-body">
+            <h4 class="card-title">Lugar: <%= loc["name"]%> </h4>
+          </div>
+          <div class="card-footer">
+            <%= link_to 'Ver Lugar', "../locations/#{loc["id"]}", class:"btn btn-secondary" %>
           </div>
         </div>
+      </div>
       <% end %>
+      <% end %>
+
 
 
 

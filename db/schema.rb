@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_29_213906) do
+ActiveRecord::Schema.define(version: 2020_03_27_204755) do
 
   create_table "characters", force: :cascade do |t|
     t.integer "id_char"
@@ -51,15 +51,6 @@ ActiveRecord::Schema.define(version: 2020_03_29_213906) do
     t.string "created"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "pg_search_documents", force: :cascade do |t|
-    t.text "content"
-    t.string "searchable_type"
-    t.integer "searchable_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id"
   end
 
 end

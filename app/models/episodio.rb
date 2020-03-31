@@ -37,5 +37,17 @@ class Episodio < ApplicationRecord
     return char
   end
 
+  def self.consulta_todos
+    i = 1
+    list = []
+    while i <= 31 do
+      list << i
+      i +=1
+    end
+    http = HTTP.get("https://rickandmortyapi.com/api/episode/#{list}").body
+    char = JSON.parse(http)
+    return char
+  end
+
 
 end

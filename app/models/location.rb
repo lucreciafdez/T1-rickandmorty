@@ -31,4 +31,16 @@ class Location < ApplicationRecord
     return char_url
   end
 
+  def self.consulta_todos
+    i = 1
+    list = []
+    while i <= 76 do
+      list << i
+      i +=1
+    end
+    http = HTTP.get("https://rickandmortyapi.com/api/location/#{list}").body
+    char = JSON.parse(http)
+    return char
+  end
+
 end

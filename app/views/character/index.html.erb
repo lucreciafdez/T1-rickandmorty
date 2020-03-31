@@ -40,24 +40,20 @@
       <div class="row text-center">
 
 
-                <% i = 1 %>
-                <% while i <= 25 do %>
-                <%= result = Character.consulta_pagina(i) ; nil%>
-                 <% result.each do |char| %>
-                    <div class="col-lg-3 col-md-6 mb-4">
-                      <div class="card h-100">
-                        <img class="card-img-top" src=<%= char["image"] %> alt="">
-                        <div class="card-body">
-                          <h4 class="card-title"><%= char["name"]%> </h4>
-                        </div>
-                        <div class="card-footer">
-                          <%= link_to 'Ver Personaje', "../character/#{char["id"]}", class:"btn btn-secondary" %>
-                        </div>
-                      </div>
-                    </div>
-                   <% end %>
-                  <% i += 1 %>
-                <% end %>
+        <% url_char = Character.consulta_todos%>
+        <% url_char.each do |char| %>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card h-100">
+            <img class="card-img-top" src=<%= char["image"] %> alt="">
+            <div class="card-body">
+              <h4 class="card-title">Personaje: <%= char["name"]%> </h4>
+            </div>
+            <div class="card-footer">
+              <%= link_to 'Ver Personaje', "../character/#{char["id"]}", class:"btn btn-secondary" %>
+            </div>
+          </div>
+        </div>
+        <% end %>
       <!-- /.row -->
 
     </div>

@@ -9,23 +9,4 @@ class CharacterController < ApplicationController
     end
   end
 
-  def show
-    @character = Character.find(params[:id])
-  end
-
-  def create
-   @character = Character.new(param[:character])
-  end
-
-  def new
-    @character = Character.new
-  end
-
-  private
-    	def episodio_params
-      	params.require(:character).permit(:id_char, :name, :status, :species,
-           :type, :gender, :origin, :location, :image, :episode, :url, :created)
-        #params.permit(:nombre, :correo, :direccion, :valoracion, :imagenes, :telefono)
-      end
-
 end

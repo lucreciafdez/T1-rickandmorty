@@ -12,6 +12,18 @@ class Character < ApplicationRecord
     return char
   end
 
+  def self.consulta_todos
+    i = 1
+    list = []
+    while i <= 493 do
+      list << i
+      i +=1
+    end
+    http = HTTP.get("https://rickandmortyapi.com/api/character/#{list}").body
+    char = JSON.parse(http)
+    return char
+  end
+
   def self.consulta_pagina(i)
     http = HTTP.get("https://rickandmortyapi.com/api/character/?page=#{i}").body
     char = JSON.parse(http)

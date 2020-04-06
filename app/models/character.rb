@@ -7,7 +7,7 @@ class Character < ApplicationRecord
   end
 
   def self.consulta_uno(i)
-    http = HTTP.get("https://rickandmortyapi.com/api/character/#{i}").body
+    http = HTTP.get("https://integracion-rick-morty-api.herokuapp.com/api/character/#{i}").body
     char = JSON.parse(http)
     return char
   end
@@ -19,13 +19,13 @@ class Character < ApplicationRecord
       list << i
       i +=1
     end
-    http = HTTP.get("https://rickandmortyapi.com/api/character/#{list}").body
+    http = HTTP.get("https://integracion-rick-morty-api.herokuapp.com/api/character/#{list}").body
     char = JSON.parse(http)
     return char
   end
 
   def self.consulta_pagina(i)
-    http = HTTP.get("https://rickandmortyapi.com/api/character/?page=#{i}").body
+    http = HTTP.get("https://integracion-rick-morty-api.herokuapp.com/api/character/?page=#{i}").body
     char = JSON.parse(http)
     return char["results"]
   end
@@ -37,7 +37,7 @@ class Character < ApplicationRecord
   end
 
   def self.consulta_obtener_epi(i)
-    http = HTTP.get("https://rickandmortyapi.com/api/character/#{i}").body
+    http = HTTP.get("https://integracion-rick-morty-api.herokuapp.com/api/character/#{i}").body
     char = JSON.parse(http)
     episode = char["episode"]
     list = []
@@ -45,7 +45,7 @@ class Character < ApplicationRecord
       num = eval(url.split('/').last)
       list << num
     end
-    epi_url = "https://rickandmortyapi.com/api/episode/#{list}"
+    epi_url = "https://integracion-rick-morty-api.herokuapp.com/api/episode/#{list}"
     return epi_url
   end
 
